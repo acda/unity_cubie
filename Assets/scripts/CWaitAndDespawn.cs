@@ -14,5 +14,5 @@ public class CWaitAndDespawn : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	public float waitTime;
+	public float waitTime = 10.0f;
 }

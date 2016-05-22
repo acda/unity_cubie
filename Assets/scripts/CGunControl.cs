@@ -18,7 +18,7 @@ public class CGunControl : MonoBehaviour
 	float angle_x, angle_y;
 	Vector3 vecX = new Vector3(1.0f,0.0f,0.0f);
 	Vector3 vecY = new Vector3(0.0f,1.0f,0.0f);
-	Vector3 vecZ = new Vector3(0.0f,0.0f,1.0f);
+	//Vector3 vecZ = new Vector3(0.0f,0.0f,1.0f);
 	float m_pressed;
 
 	// Use this for initialization

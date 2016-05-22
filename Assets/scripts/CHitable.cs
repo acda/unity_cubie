@@ -16,7 +16,7 @@ public class CHitable : MonoBehaviour
 
 	public void takeDamage( GameObject instigator , Vector3 impact , float amount )
 	{
-		m_hitPoints -= 1.0f;
+		m_hitPoints -= amount;
 		if(m_hitPoints<=0.0f)
 		{
 			// spawn a boom.

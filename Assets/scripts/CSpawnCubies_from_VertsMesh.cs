@@ -6,6 +6,7 @@ public class CSpawnCubies_from_VertsMesh : MonoBehaviour
 
     Mesh m_vertMesh;
     public GameObject cubie_prototype;
+	public bool spawn_on_start = false;
 
     void Awake()
     {
@@ -14,10 +15,17 @@ public class CSpawnCubies_from_VertsMesh : MonoBehaviour
         m_vertMesh = fil.mesh;
     }
 
-    void Start ()
+	void Start()
+	{
+		if(spawn_on_start)
+			DoSpawn();
+	}
+
+    public GameObject[] DoSpawn()
     {
         Vector3[] pts;
         ulong[] hts;
+		System.Collections.Generic.List<GameObject> res = new System.Collections.Generic.List<GameObject>();
         uint num, i, j,numhts;
 
         pts = m_vertMesh.vertices;
@@ -39,12 +47,14 @@ public class CSpawnCubies_from_VertsMesh : MonoBehaviour
                 hts[numhts++] = u;
                 GameObject cube;
                 cube = (GameObject)Instantiate(cubie_prototype, pos, transform.rotation);
+				res.Add(cube);
             }
         }
 
         Debug.Log("spawned " + numhts.ToString() + "cubies.");
         Debug.Log("num = " + num.ToString());
-        //        Destroy(gameObject);
+		//        Destroy(gameObject);
+		return res.ToArray();
     }
 
     private ulong ul_from_v3(Vector3 v)

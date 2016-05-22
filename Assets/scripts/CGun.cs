@@ -49,12 +49,14 @@ public class CGun : MonoBehaviour
 		m_recoil = 0.0f;
 		transform.localPosition = orgPos;
 		Vector3 pos;
+		Vector3 shotdir = Random.insideUnitCircle*0.04f;
+		shotdir.z = 1.0f;
 		Quaternion rot;
 		pos = transform.TransformPoint(vecZ * spawn_offset_Z);
-		rot = Quaternion.FromToRotation(vecZ,transform.TransformDirection(vecZ));
+		rot = Quaternion.FromToRotation(vecZ,transform.TransformDirection(shotdir));
 		bullet = (GameObject)Instantiate(prefab_bullet, pos, rot);
 		rgb = bullet.GetComponent<Rigidbody>();
 		if (rgb != null)
-			rgb.velocity = shot_speed * transform.TransformDirection(vecZ);
+			rgb.velocity = shot_speed * transform.TransformDirection(shotdir);
 	}
 }
