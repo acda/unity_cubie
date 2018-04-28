@@ -26,8 +26,8 @@ public class CGunControl : MonoBehaviour
 	{
 		System.Collections.Generic.List<GameObject> lis = new System.Collections.Generic.List<GameObject>();
 		// find the objects for the 'cannon_bar' and the 'cannon_barrel's.
-		m_base = gameObject.transform.FindChild("cannon_base").gameObject;
-		m_bar = m_base.transform.FindChild("cannon_bar").gameObject;
+		m_base = gameObject.transform.Find("cannon_base").gameObject;
+		m_bar = m_base.transform.Find("cannon_bar").gameObject;
 		foreach(Transform tf in m_bar.transform)
 		{
 			GameObject go = tf.gameObject;
@@ -81,6 +81,11 @@ public class CGunControl : MonoBehaviour
 	{
 		m_base.transform.localRotation = Quaternion.AngleAxis(angle_x, vecY);
 		m_bar.transform.localRotation = Quaternion.AngleAxis(-angle_y, vecX);
+	}
+
+	public void dofire()
+	{
+//		fireGuns();
 	}
 
 	void fireGuns()
